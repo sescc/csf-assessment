@@ -1,5 +1,6 @@
 package ibf2023.csf.backend.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import ibf2023.csf.backend.services.PictureService;
 import jakarta.json.Json;
 
 // You can add addtional methods and annotations to this controller. 
@@ -15,6 +17,9 @@ import jakarta.json.Json;
 @Controller
 @RequestMapping(path="/api")
 public class UploadController {
+
+	@Autowired
+	private PictureService picSvc;
 
 	// TODO Task 5.2
 	// You may change the method signature by adding additional parameters and annotations.
