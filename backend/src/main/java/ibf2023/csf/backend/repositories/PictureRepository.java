@@ -14,7 +14,18 @@ public class PictureRepository {
 
 	// TODO Task 4.1
 	// You may change the method signature by adding parameters and/or the return type
-	// You may throw any exception 
+	// You may throw any exception
+
+	/*
+    db.travelpics.insert({
+        date: new Date(),
+        title: "",
+        comments: "",
+        url: "",
+        size: ,
+        edited: []
+     })
+     */
 	public void save(Image img) {
 		// IMPORTANT: Write the native mongo query in the comments above this method
 		mongoTemplate.save(img, "travelpics");

@@ -6,22 +6,39 @@
             [width]="282"
             [trigger]="triggerObservable"
             (imageCapture)="captureImage($event)"
-            [switchCamera]="nextWebcamObservable"
             [videoOptions]="videoOptions"
             [imageQuality]="1"
             (initError)="handleInitError($event)"
     ></webcam>
 
+    <!-- [switchCamera]="nextWebcamObservable" -->
     <!-- [imageType]="image/png" -->
 
     <p>
+    <!-- <label *ngFor="let h of heights">
+        <input type="radio" [value]="h.value" formControlName="height" 
+                [checked]="aspectForm.get('height').value == h.value">
+        {{h.text}}
+    </label> -->
+
+    <!-- <label *ngFor="let ar of aspectRatios">
+        <input formControlName="aspectRatios"
+                type="radio"
+                name="aspectRatios"
+                [value]="aspectRatio.height" />
+        {{ ar.name }}
+    </label> -->
+
     <label for="aspectRatio">Aspect:</label> &nbsp; 
-    <input id="aspectRatio" name="width" type="radio" value="16_9" checked><label for="aspectRatio_16_9">16:9</label> &nbsp; 
-    <input id="aspectRatio" name="width" type="radio" value="4_3"><label for="aspectRatio_4_3">4:3</label> &nbsp; 
-    <input id="aspectRatio" name="width" type="radio" value="3_2"><label for="aspectRatio_3_2">3:2</label> &nbsp; 
-    <input id="aspectRatio" name="width" type="radio" value="1_1"><label for="aspectRatio_1_1">1:1</label>
+    <input id="aspectRatio" name="height" type="radio" value="16_9" checked><label for="aspectRatio_16_9">16:9</label> &nbsp; 
+    <input id="aspectRatio" name="height" type="radio" value="4_3"><label for="aspectRatio_4_3">4:3</label> &nbsp; 
+    <input id="aspectRatio" name="height" type="radio" value="3_2"><label for="aspectRatio_3_2">3:2</label> &nbsp; 
+    <input id="aspectRatio" name="height" type="radio" value="1_1"><label for="aspectRatio_1_1">1:1</label>
 
     <p>
     <button (click)="triggerSnapshot();">Snap</button>
+
+    <p>
+    <img [src]="webcamImage?.imageAsDataUrl" />
 
 </div>

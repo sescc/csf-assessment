@@ -8,6 +8,18 @@ import { WebcamModule } from 'ngx-webcam';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { RouterModule, Routes } from '@angular/router';
+import { UploadService } from './upload.service';
+import { leavePicture } from './guards';
+
+const appRoute : Routes = [
+  
+  {path: "", component: MainComponent},
+  {path: "picture", component: PictureComponent,
+    canDeactivate: [ leavePicture ]
+  },
+  {path:"**", redirectTo: "/", pathMatch:"full"}
+];
 
 @NgModule({
   declarations: [
@@ -15,11 +27,12 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    WebcamModule,
+    RouterModule.forRoot(appRoute, {useHash: true}),
     ReactiveFormsModule,
     HttpClientModule,
+    WebcamModule,
   ],
-  providers: [],
+  providers: [UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
