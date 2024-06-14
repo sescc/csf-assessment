@@ -53,4 +53,3 @@ ENTRYPOINT SERVER_PORT=${PORT} java -jar app.jar
 # >> docker build -t sescc/csf-assessment:v1.0
 
 # run docker
-# >> docker run -d -p 8080:8080 -e S3_KEY_SECRET=+aKUOSh3tciGSf6KNegMe1k2G5boQN8fUYH+z36zuJA S3_KEY_ACCESS=DO00ULJ7EEBK3D8D4VL3 sescc/csf-assessment:v1.0
