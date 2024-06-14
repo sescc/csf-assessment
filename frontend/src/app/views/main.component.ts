@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
 
@@ -20,12 +21,16 @@ export class MainComponent implements OnInit {
 
   // Image taken
   public webcamImage!: WebcamImage;
-  public imageType: string = "image/png";
+  processedImg = "";
 
   // Take picture
   private trigger: Subject<void> = new Subject<void>();
   // Handle multiple cams if exist
   private nextWebcam: Subject<boolean|string> = new Subject<boolean|string>();
+
+
+  private aspectForm!: FormGroup;
+  private readonly formbuilder = inject(FormBuilder);
 
   
   ngOnInit(): void {
@@ -44,9 +49,10 @@ export class MainComponent implements OnInit {
     this.errors.push(error);
   }
 
-  public handleImage(webcamImage: WebcamImage): void {
-    console.info("Image taken >>>", webcamImage);
+  public captureImage(webcamImage: WebcamImage): void {
     this.webcamImage = webcamImage;
+    this.processedImg = webcamImage!.imageAsDataUrl;
+    console.info("Image taken >>>", webcamImage, this.processedImg);
   }
 
   public get triggerObservable(): Observable<void> {

@@ -8,6 +8,7 @@ import { WebcamModule } from 'ngx-webcam';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent, MainComponent, PictureComponent
